@@ -42,6 +42,15 @@ button {
   border: 0;
 }
 
+input {
+  outline: none;
+}
+
+textarea {
+  outline: none;
+  resize: none;
+}
+
 /* Контейнер_секция_visually-hidden */
 .container {
   width: 1200px;
@@ -205,7 +214,7 @@ button {
   font-size: 16px;
   line-height: 1.87;
   letter-spacing: 0.06em;
-  background-color: #2196f3;
+  background-color: var(--theme-color);
   color: #fff;
   cursor: pointer;
   min-width: 200px;
@@ -475,7 +484,14 @@ button {
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
   background-color: #fff;
+  cursor: pointer;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+.modal-close-button:hover {
+  color: var(--theme-color);
+}
+
 .modal-close-button-icon {
   fill: currentColor;
 }
@@ -486,28 +502,146 @@ button {
   line-height: 1.15;
   text-align: center;
   letter-spacing: 0.03em;
-}
-
-.modal-form {
-  /* display: flex; */
+  margin-bottom: 12px;
 }
 
 .modal-feedback-label {
   display: block;
+  margin-bottom: 10px;
 }
 .modal-label-name {
   font-size: 12px;
   line-height: 1.17;
   letter-spacing: 0.01em;
   color: var(--text-secondary);
+  margin-bottom: 4px;
 }
 
-.modal-feedback-check {
+.input-box {
+  position: relative;
+}
+
+.input-item {
   display: block;
+  width: 100%;
+  height: 40px;
+  padding-left: 42px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  border: 1px solid rgba(33, 33, 33, 0.2);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.input-item:focus {
+  border-color: var(--theme-color);
+}
+
+.input-item:focus + .input-item-icon {
+  color: var(--theme-color);
+}
+
+.input-item-icon {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  fill: currentColor;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.textarea-item {
+  display: block;
+  width: 100%;
+  min-height: 120px;
+  padding: 16px 12px;
+  border: 1px solid rgba(33, 33, 33, 0.2);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.textarea-item::placeholder {
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.01em;
+  color: rgba(117, 117, 117, 0.5);
+}
+
+.textarea-item:focus {
+  border-color: var(--theme-color);
+}
+
+.modal-check {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.modal-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  position: absolute;
+}
+
+.checkbox-icon {
+  display: block;
+  border: 2px solid rgba(33, 33, 33, 1);
+  border-radius: 2px;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-checkbox:checked + .checkbox-icon {
+  background-color: var(--theme-color);
+  border-color: var(--theme-color);
+}
+
+.modal-checkbox-text {
+  margin-left: 8px;
+  font-size: 14px;
+  line-height: 1.71;
+  letter-spacing: 0.03em;
+  color: var(--text-secondary);
+}
+
+.agreement-link {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 1.71;
+  letter-spacing: 0.03em;
+  text-decoration: underline;
+  color: var(--theme-color);
 }
 
 .modal-form-button {
   display: block;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 200px;
+  min-height: 50px;
+  background-color: var(--theme-color);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.87;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.06em;
+  color: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-form-button:hover,
+.modal-form-button:focus {
+  background-color: #188ce8;
 }
 /* Футер */
 .footer-box {
@@ -593,28 +727,31 @@ address {
   background-color: var(--theme-color);
 }
 
-.subscribe-box {
+.subscribe-form {
+  display: flex;
+  flex-direction: column;
   margin-left: auto;
   min-width: 570px;
 }
 
-.subscribe-box-form {
-  display: flex;
-}
-
-.subscribe-text {
+.subscribe-label {
   font-weight: 700;
   font-size: 14px;
   line-height: 1.15;
   letter-spacing: 0.03em;
   text-transform: uppercase;
   color: #ffffff;
-  margin-bottom: 20px;
+}
+
+.subscribe-input-box {
+  display: flex;
+  margin-top: 20px;
 }
 
 .mail-input {
   display: block;
-  width: 358px;
+  min-width: 358px;
+  min-height: 50px;
   padding-left: 16px;
   background-color: transparent;
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -627,6 +764,9 @@ address {
 }
 
 .subscribe-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   min-width: 200px;
   height: 50px;
   padding: 10px 29px;
@@ -640,6 +780,10 @@ address {
   letter-spacing: 0.06em;
   color: #ffffff;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.subscribe-icon {
+  margin-left: 10px;
 }
 
 .subscribe-button:hover,
